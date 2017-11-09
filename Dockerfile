@@ -42,8 +42,12 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 
 RUN [ "cross-build-end" ]
+
 VOLUME ["/var/lib/mysql"]
+
 COPY docker-entrypoint.sh /usr/local/bin/
+
 ENTRYPOINT ["docker-entrypoint.sh"]
+
 EXPOSE 3306 CMD ["mysqld"]
 
