@@ -1,4 +1,4 @@
-FROM resin/armv7hf-debian:stretch
+FROM resin/armv7hf-debian:jessie
 
 RUN [ "cross-build-start" ]
 
