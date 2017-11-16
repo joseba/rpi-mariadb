@@ -1,4 +1,4 @@
-FROM resin/armv7hf-debian:jessie
+FROM resin/armv7hf-debian:stretch
 
 RUN [ "cross-build-start" ]
 
@@ -17,6 +17,7 @@ ENV GOSU_VERSION 1.10 RUN set -x \
 	&& chmod +x /usr/local/bin/gosu \
 	&& gosu nobody true \
 	&& apt-get purge -y --auto-remove ca-certificates wget
+
 RUN mkdir /docker-entrypoint-initdb.d
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -50,4 +51,3 @@ COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 3306 CMD ["mysqld"]
-
